@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: traefik
+      version: 41.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: traefik
+      interval: 5m
+  values:
+    global:
+      checkNewVersion: false
+    additionalArguments:
+      - "--serversTransport.insecureSkipVerify=true"
+      - "--log.level=INFO"
+    deployment:
+      replicas: 3
+    ports:
+      web:
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
+    ingressRoute:
+      dashboard:
+        enabled: false
+    providers:
+      kubernetesCRD:
+        enabled: false
+      kubernetesIngress:
+        enabled: false
+      kubernetesGateway:
+        enabled: true
+    service:
+      annotations:
+        metallb.universe.tf/allow-shared-ip: "web-services"
+    gateway:
+      listeners:
+        web:
+          # -- Port is the network port. Multiple listeners may use the same port, subject to the Listener compatibility rules.
+          # The port must match a port declared in ports section.
+          port: 8000
+          # Specify expected protocol on this listener. See [ProtocolType](https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io/v1.ProtocolType)
+          protocol: HTTP
+          # -- (object) Routes are restricted to namespace of the gateway [by default](https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io/v1.FromNamespaces
+          namespacePolicy:
+            from: All
+        # websecure listener is disabled by default because certificateRefs needs to be added,
+        # or you may specify TLS protocol with Passthrough mode and add "--providers.kubernetesGateway.experimentalChannel=true" in additionalArguments section.
+        websecure:
+          # -- Port is the network port. Multiple listeners may use the same port, subject to the Listener compatibility rules.
+          # The port must match a port declared in ports section.
+          port: 8443
+          # -- Optional hostname. See [Hostname](https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io/v1.Hostname)
+          hostname:
+          # Specify expected protocol on this listener See [ProtocolType](https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io/v1.ProtocolType)
+          protocol: HTTPS
+          # -- Add certificates for TLS or HTTPS protocols. See [GatewayTLSConfig](https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io%2fv1.GatewayTLSConfig)
+          certificateRefs:
+            - kind: Secret
+              name: com-untouchedwagons
+          # -- TLS behavior for the TLS session initiated by the client. See [TLSModeType](https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io/v1.TLSModeType).
+          mode: Terminate
+          namespacePolicy:
+            from: All

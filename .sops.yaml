@@ -1,0 +1,51 @@
+---
+creation_rules:
+  - path_regex: kubernetes/secret.yaml
+    encrypted_regex: "^(age.agekey|identity)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/cert-manager/cert-manager-config/app/secret.yaml
+    encrypted_regex: "^(cloudflare-token)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/cert-manager/cert-manager-config/app/clusterIssuer.yaml
+    encrypted_regex: "^(email)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/flux-system/flux-alerting/app/secret.yaml
+    encrypted_regex: "^(address)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/components/volsync-nfs-backup/secret.yaml
+    encrypted_regex: "^(RESTIC_PASSWORD|RESTIC_REPOSITORY)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/monitoring/prometheus/app/secret.yaml
+    encrypted_regex: "^(PUSHOVER_TOKEN|PUSHOVER_USER_KEY)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/network/pod-gateway/app/secret.yaml
+    encrypted_regex: "^WIREGUARD"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/default/forgejo/app/secret-ssh.yaml
+    encrypted_regex: "^ed25519"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+  - path_regex: kubernetes/apps/default/forgejo/app/secret-admin.yaml
+    encrypted_regex: "^(username|password)$"
+    key_groups:
+      - age:
+          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+
+stores:
+  yaml:
+    indent: 2

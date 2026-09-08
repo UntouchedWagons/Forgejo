@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/core/persistentvolumeclaim_v1.json
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "${APP}"
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+spec:
+  storageClassName: "${VOLSYNC_STORAGECLASS:=host-zfs-standard}"
+  accessModes: ["${VOLSYNC_ACCESSMODES:=ReadWriteOnce}"]
+  resources:
+    requests:
+      storage: "${VOLSYNC_CAPACITY:=5Gi}"

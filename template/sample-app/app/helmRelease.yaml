@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: release-name
+spec:
+  interval: 5m
+
+  # If you want to use an OCI repository
+  chartRef:
+    kind: OCIRepository
+    name: repository-name
+    namespace: kube-system
+  # ---
+
+  # If you want to use a Helm repository
+  chart:
+    spec:
+      chart: chart-name
+      version: THE_VERSION
+      sourceRef:
+        kind: HelmRepository
+        name: repository-name
+        namespace: default
+      interval: 5m
+  # ---
+
+  # values:

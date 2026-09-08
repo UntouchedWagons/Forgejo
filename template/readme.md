@@ -1,0 +1,1 @@
+This folder holds a template to be deployed by Flux
