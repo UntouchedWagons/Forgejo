@@ -7,4 +7,4 @@ resources:
   - namespace.yaml
   - ../../settings/configMap.yaml
   - snapshot-controller
-  # - forgejo
+  - forgejo
