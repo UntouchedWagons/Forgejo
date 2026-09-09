@@ -25,6 +25,8 @@ spec:
           PATH: /data/git/lfs
         mailer:
           ENABLED: false
+        migrations:
+          ALLOW_LOCALNETWORKS: true
         openid:
           ENABLE_OPENID_SIGNIN: false
           ENABLE_OPENID_SIGNUP: false
