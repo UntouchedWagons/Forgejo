@@ -9,6 +9,7 @@ spec:
   path: ./kubernetes/apps/default/forgejo/app
   components:
     - ../../../../components/volsync-nfs-backup/
+    - ../../../../components/dragonfly/
   prune: true
   wait: true
   sourceRef:
@@ -30,3 +31,11 @@ spec:
   dependsOn:
     - name: gateway-api
       namespace: kube-system
+    - name: dragonfly-operator
+      namespace: database
+
+  healthCheckExprs:
+    - apiVersion: dragonflydb.io/v1alpha1
+      kind: Dragonfly
+      failed: status.phase != 'ready'
+      current: status.phase == 'ready'
