@@ -2,36 +2,36 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: com-untouchedwagons
+    name: com-untouchedwagons
 spec:
-  acme:
-    # https://acme-v02.api.letsencrypt.org/directory
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: ENC[AES256_GCM,data:IRZuQ5nJTkau3wIs5RPz+31QprXWouC8nA==,iv:SGLAy4LYQfVG1kXr4bLrm3hVPFdDKxZtG8rBF4LO3ww=,tag:ZqV50s3x/+SPNLQEjrEHeg==,type:str]
-    privateKeySecretRef:
-      name: com-untouchedwagons
-    solvers:
-      - dns01:
-          cloudflare:
-            email: ENC[AES256_GCM,data:7SGK7etxmL0HeUlvk1PeE06eVcmeS3gPxg==,iv:x7h59CgZo/4yE+wWtiGnRf19E5b5NfMAfdMlmI3Xyog=,tag:W2xp6HUFP53S3l6yj3WYhg==,type:str]
-            apiTokenSecretRef:
-              name: cloudflare-token-secret
-              key: cloudflare-token
-        selector:
-          dnsZones:
-            - untouchedwagons.com
+    acme:
+        # https://acme-v02.api.letsencrypt.org/directory
+        server: https://acme-v02.api.letsencrypt.org/directory
+        email: ENC[AES256_GCM,data:IRZuQ5nJTkau3wIs5RPz+31QprXWouC8nA==,iv:SGLAy4LYQfVG1kXr4bLrm3hVPFdDKxZtG8rBF4LO3ww=,tag:ZqV50s3x/+SPNLQEjrEHeg==,type:str]
+        privateKeySecretRef:
+            name: com-untouchedwagons
+        solvers:
+            - dns01:
+                cloudflare:
+                    email: ENC[AES256_GCM,data:7SGK7etxmL0HeUlvk1PeE06eVcmeS3gPxg==,iv:x7h59CgZo/4yE+wWtiGnRf19E5b5NfMAfdMlmI3Xyog=,tag:W2xp6HUFP53S3l6yj3WYhg==,type:str]
+                    apiTokenSecretRef:
+                        name: cloudflare-token-secret
+                        key: cloudflare-token
+              selector:
+                dnsZones:
+                    - untouchedwagons.com
 sops:
-  age:
-    - recipient: age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
-      enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5ZTFXbHBNVDhWa051RktM
-        cVFUK29uWW5YbFZueWNnN3J1UGY4d282V25zCjk3Ukx1Y2ZCOCtVYXc0dFVsZ3VC
-        Z0Q2bXY0ak5MQTJHQVZuU2dXRUtUaVEKLS0tICs4a1d6WWJ4M2xNRm01MDJBSktN
-        b3hDbWVOeWZuNzlqYWc2Z01qeFRGckEKSYAABvMZY0c8GjnkehI32BGC+lB+ped8
-        T01Ab1JJDiOXDGJG0NAdqTUlhZU0RNER85QFS2XA9XIeJ/2XbTrsSQ==
-        -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2026-09-08T00:09:09Z"
-  mac: ENC[AES256_GCM,data:KokkmPJ96iaspyLesv/wFzw3qNyJsVRH3hpBl+tu4YQh5AcmlZ1aMi9T+GGfwJRorAwDOOnodbJMbPhvXUuoiN5XI+t1rCuusbuHwDeRqAR6AKpdPT2lyGUAdZu5r0rIFh68ff17xuqpWEzowhXWMA2lGGYFUEyEL4xQAc0DGF0=,iv:r6xcKflwH6j/pCsMESwCYfN7oANXbwGnUjGuSuextVg=,tag:1K/pfR1wY1i0z90qRShXQg==,type:str]
-  encrypted_regex: ^(email)$
-  version: 3.12.1
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5ZTFXbHBNVDhWa051RktM
+            cVFUK29uWW5YbFZueWNnN3J1UGY4d282V25zCjk3Ukx1Y2ZCOCtVYXc0dFVsZ3VC
+            Z0Q2bXY0ak5MQTJHQVZuU2dXRUtUaVEKLS0tICs4a1d6WWJ4M2xNRm01MDJBSktN
+            b3hDbWVOeWZuNzlqYWc2Z01qeFRGckEKSYAABvMZY0c8GjnkehI32BGC+lB+ped8
+            T01Ab1JJDiOXDGJG0NAdqTUlhZU0RNER85QFS2XA9XIeJ/2XbTrsSQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+    encrypted_regex: ^(email)$
+    lastmodified: "2026-09-09T15:33:36Z"
+    mac: ENC[AES256_GCM,data:8JHRXXT84JWrLaaOnl8QJuYAKlYVCLQdDA94iewJ8JNR87/IY/kgl+3NqryorLdo43EsqrQUXef5cNT9DXHuPT/jJdDZvkdeQp2t+jyFdgLXqU+ffa0HedJoR3hegOzJzjlgCJ20SNmGVphdwu6gCPI9YiEbdbGdwDoXDyPzUXk=,iv:l/9HT5iU4r+qvAhfP1ae622ggowc2O+a0aTracw/M8I=,tag:y9BsPETKh72nQ9k6Hj6ALw==,type:str]
+    version: 3.13.1
