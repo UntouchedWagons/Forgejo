@@ -24,7 +24,7 @@ flux-operator:
 
 [doc('Bootstrap flux instance')]
 flux-instance:
-    helm upgrade --install flux-instance \
+    helm upgrade --install --force-conflicts flux-instance \
         --namespace flux-system \
         --create-namespace oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance \
         --version $(yq '.spec.ref.tag' kubernetes/apps/flux-system/flux-instance/app/OCIRepository.yaml) \
