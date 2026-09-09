@@ -6,5 +6,5 @@ metadata:
 data:
   CLUSTER_DOMAIN: forgejo.infrastructure.untouchedwagons.com # ${CLUSTER_DOMAIN}
   CLUSTER_NAME: Forgejo cluster # ${CLUSTER_NAME}
-  GIT_REPO_URL: https://forgejo.services.untouchedwagons.com/UntouchedWagons/New-Forgejo.git # ${GIT_REPO_URL}
+  GIT_REPO_URL: https://github.com/UntouchedWagons/Forgejo.git # ${GIT_REPO_URL}
   GIT_REPO_BRANCH: main # ${GIT_REPO_BRANCH}
