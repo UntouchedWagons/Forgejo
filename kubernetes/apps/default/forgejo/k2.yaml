@@ -34,8 +34,8 @@ spec:
     - name: dragonfly-operator
       namespace: database
 
-  healthCheckExprs:
-    - apiVersion: dragonflydb.io/v1alpha1
-      kind: Dragonfly
-      failed: status.phase != 'ready'
-      current: status.phase == 'ready'
+  # healthCheckExprs:
+  #   - apiVersion: dragonflydb.io/v1alpha1
+  #     kind: Dragonfly
+  #     failed: status.phase != 'ready'
+  #     current: status.phase == 'ready'
