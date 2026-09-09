@@ -13,6 +13,10 @@ spec:
       admin:
         existingSecret: forgejo-admin-secret
       config:
+        cache:
+          ENABLED: true
+          ADAPTER: redis
+          HOST: redis://forgejo-dragonfly:6379?pool_size=100&idle_timeout=180s
         cron.archive_cleanup:
           ENABLED: true
           RUN_AT_START: true
@@ -30,6 +34,9 @@ spec:
         openid:
           ENABLE_OPENID_SIGNIN: false
           ENABLE_OPENID_SIGNUP: false
+        queue:
+          TYPE: redis
+          CONN_STR: redis://forgejo-dragonfly:6379?pool_size=100&idle_timeout=180s
         repository:
           DEFAULT_REPO_UNITS: repo.code,repo.releases,repo.issues,repo.pulls,repo.actions
           DISABLED_REPO_UNITS: repo.ext_wiki,repo.ext_issues
@@ -64,6 +71,10 @@ spec:
           DISABLE_ORGANIZATIONS_PAGE: true
           DISABLE_USERS_PAGE: true
           REQUIRE_SIGNIN_VIEW: false
+        session:
+          PROVIDER: redis
+          PROVIDER_CONFIG: redis://forgejo-dragonfly:6379?pool_size=100&idle_timeout=180s
+          SESSION_LIFE_TIME: "1209600"
         webhook:
           ALLOWED_HOST_LIST: "*"
     extraContainerVolumeMounts:
