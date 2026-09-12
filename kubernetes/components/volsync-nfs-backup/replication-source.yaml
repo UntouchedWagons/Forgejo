@@ -28,5 +28,5 @@ spec:
       - mountPath: repository
         volumeSource:
           nfs:
-            server: 192.168.16.30
-            path: /mnt/tank/Media/Backups
+            server: vault.internal.untouchedwagons.com
+            path: /mnt/vault/Media/Backups
