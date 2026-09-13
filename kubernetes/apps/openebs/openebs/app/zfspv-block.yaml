@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/storage.k8s.io/storageclass_v1.json
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: zfspv-block
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
+parameters:
+  recordsize: "16k"
+  compression: "lz4"
+  dedup: "off"
+  poolname: "zfspv-pool/pvcs"

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: openebs
+  namespace: openebs
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: openebs
+    namespace: openebs
+  values:
+    engines:
+      replicated:
+        mayastor:
+          enabled: false
+      local:
+        lvm:
+          enabled: false
+        hostpath:
+          enabled: false
+
+    alloy:
+      enabled: false
+
+    loki:
+      enabled: false
+
+    openebs-crds:
+      csi:
+        volumeSnapshots:
+          # -- Enable/Disable installation of Volume Snapshot CRD's
+          enabled: false
+          keep: false
