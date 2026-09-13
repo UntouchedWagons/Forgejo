@@ -7,7 +7,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: forgejo
-  interval: 30m
+  interval: 5m
   values:
     gitea:
       admin:
