@@ -8,19 +8,22 @@ spec:
   trigger:
     schedule: "0 */4 * * *"
   restic:
-    copyMethod: "${VOLSYNC_COPYMETHOD:=Direct}"
+    copyMethod: "${VOLSYNC_COPYMETHOD:=Snapshot}"
     pruneIntervalDays: 14
     repository: "${APP}-volsync-secret"
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=host-zfs-snapshot}"
     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=5Gi}"
-    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=local-path}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=host-zfs-standard}"
     cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}"]
-    storageClassName: "${VOLSYNC_STORAGECLASS:=local-path}"
+    storageClassName: "${VOLSYNC_STORAGECLASS:=host-zfs-standard}"
     accessModes: ["${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}"]
+
     moverSecurityContext:
       runAsUser: ${VOLSYNC_PUID:=1000}
       runAsGroup: ${VOLSYNC_PGID:=1000}
       fsGroup: ${VOLSYNC_PGID:=1000}
       fsGroupChangePolicy: "OnRootMismatch"
+
     retain:
       hourly: 24
       daily: 7
@@ -28,5 +31,5 @@ spec:
       - mountPath: repository
         volumeSource:
           nfs:
-            server: vault.internal.untouchedwagons.com
+            server: 192.168.16.31
             path: /mnt/vault/Media/Backups
