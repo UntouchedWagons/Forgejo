@@ -1,0 +1,45 @@
+apiVersion: config.talstomize.dev/v1alpha1
+kind: Talstomize
+
+clusterName: my-cluster
+controlPlaneEndpoint: https://192.168.20.134:6443
+secrets: ./talos-secrets.yaml
+
+# Talstomize only supports the metal platform so we have to specify what image to install
+# installer:
+#   talosVersion: v1.14.0
+#   schematic:
+#     customization:
+#       extraKernelArgs:
+#         - cpufreq.default_governor=performance
+#       systemExtensions:
+#         officialExtensions:
+#           - siderolabs/intel-ucode
+#           - siderolabs/qemu-guest-agent
+#           - siderolabs/zfs
+
+nodes:
+  xerxes.kubernetes.untouchedwagons.com:
+    ip: 192.168.20.134
+    kind: controlplane
+    installer:
+      image: factory.talos.dev/nocloud-installer/32b1861f04a8e2e7c5458116534762912e2c87f3880fe3dbeaa9da5675fa46fb:v1.14.0
+    patches:
+      - machine:
+          install:
+            disk: "/dev/sda"
+
+# Applied to every node, regardless of role.
+patches:
+  - patches/admission-control.yaml
+  - patches/filesystem-inotify-changes.yaml
+  - patches/zfs.yaml
+
+controlplanePatches:
+  - apiVersion: v1alpha1
+    kind: KubeNodeConfig
+    taints:
+      node-role.kubernetes.io/control-plane:
+        $patch: delete
+
+workerPatches: []

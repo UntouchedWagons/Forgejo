@@ -1,4 +1,4 @@
 .vscode
 .decrypted~*.yaml
 
-talos/generated/*
+talos/_out

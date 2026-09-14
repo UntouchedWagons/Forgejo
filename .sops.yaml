@@ -1,6 +1,6 @@
 ---
 creation_rules:
-  - path_regex: kubernetes/secret.yaml
+  - path_regex: bootstrap/secret.yaml
     encrypted_regex: "^(age.agekey|identity)$"
     key_groups:
       - age:
