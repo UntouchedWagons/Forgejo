@@ -32,4 +32,4 @@ spec:
         volumeSource:
           nfs:
             server: 192.168.16.30
-            path: /mnt/vault/Media/Backups
+            path: /mnt/tank/Media/Backups
