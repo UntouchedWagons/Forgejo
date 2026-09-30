@@ -31,5 +31,5 @@ spec:
       - mountPath: repository
         volumeSource:
           nfs:
-            server: 192.168.16.31
+            server: 192.168.16.30
             path: /mnt/vault/Media/Backups
