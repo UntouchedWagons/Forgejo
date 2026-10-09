@@ -11,8 +11,6 @@ spec:
     name: prometheus-community
     namespace: monitoring
   values:
-    crds:
-      enabled: false
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
       alertmanagerSpec:
