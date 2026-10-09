@@ -11,3 +11,4 @@ resources:
   - reflector
   - gateway-api
   - reloader
+  - prometheus-operator-crds
