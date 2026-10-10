@@ -9,7 +9,7 @@ nodes := `talosctl config info --talosconfig ../talos/_out/talosconfig -o yaml |
 
 # Wait until every apiserver answers /readyz. Helm and kubectl calls after this stage are not retried.
 # Shamelessly borrowed from onedr0p
-[doc('Wait for the kube api to be ready on every control node')]
+[private]
 wait-for-api:
     just log info "Running stage..." "stage" "{{ recipe_name() }}"
     for n in {{ nodes }}; do
@@ -19,28 +19,25 @@ wait-for-api:
         done
     done
 
-[doc('Applies SOPS secret then bootstrap core apps')]
-go: wait-for-api sops flux-operator flux-instance
+go: wait-for-api sops crds apps
 
-[doc('Apply SOPS secret')]
+# [doc('Applies SOPS secret then bootstrap core apps')]
+# go: wait-for-api sops flux-operator flux-instance
+
+[private]
 sops:
-    sops -d secret.yaml | kubectl apply -f -
+    sops -d secret.yaml | kubectl apply --kubeconfig ~/.kube/$(yq '.clusterName' ../talos/talstomize.yaml) -f -
 
-[doc('Install flux operator')]
-flux-operator:
-    helm upgrade --install flux-operator \
-        --namespace flux-system \
-        --create-namespace oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
-        --version $(yq '.spec.ref.tag' ../kubernetes/apps/flux-system/flux-operator/app/OCIRepository.yaml)
-    kubectl wait crd/fluxinstances.fluxcd.controlplane.io --for=condition=Established --timeout=2m
+[private]
+crds:
+    just log info "Running stage..." "stage" "{{ recipe_name() }}"
+    if ! helmfile -f "{{ source_directory() }}/helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --kubeconfig ~/.kube/$(yq '.clusterName' ../talos/talstomize.yaml) --server-side --force-conflicts -f -; then
+        just log fatal "Failed to apply base crds" "stage" "{{ recipe_name() }}"
+    fi
 
-[doc('Bootstrap flux instance')]
-flux-instance:
-    helm upgrade --install --force-conflicts flux-instance \
-        --namespace flux-system \
-        --create-namespace oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance \
-        --version $(yq '.spec.ref.tag' ../kubernetes/apps/flux-system/flux-instance/app/OCIRepository.yaml) \
-        --set instance.sync.url=$(yq '.data.GIT_REPO_URL' ../kubernetes/settings/configMap.yaml) \
-        --set instance.sync.ref=refs/heads/$(yq '.data.GIT_REPO_BRANCH' ../kubernetes/settings/configMap.yaml) \
-        --set instance.sync.path=kubernetes/flux/cluster \
-        --set instance.sync.interval=5m
+[private]
+apps:
+    just log info "Running stage..." "stage" "{{ recipe_name() }}"
+    if ! helmfile -f "{{ source_directory() }}/helmfile/apps.yaml" sync --hide-notes --kubeconfig ~/.kube/$(yq '.clusterName' ../talos/talstomize.yaml); then
+        just log fatal "Failed to sync helmfile" "stage" "{{ recipe_name() }}"
+    fi

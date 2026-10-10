@@ -2,7 +2,7 @@ apiVersion: config.talstomize.dev/v1alpha1
 kind: Talstomize
 
 clusterName: my-cluster
-controlPlaneEndpoint: https://192.168.20.134:6443
+controlPlaneEndpoint: https://forgejo.infrastructure.untouchedwagons.com:6443
 secrets: ./talos-secrets.yaml
 
 # Talstomize only supports the metal platform so we have to specify what image to install
@@ -19,8 +19,8 @@ secrets: ./talos-secrets.yaml
 #           - siderolabs/zfs
 
 nodes:
-  xerxes.kubernetes.untouchedwagons.com:
-    ip: 192.168.20.134
+  forgejo.infrastructure.untouchedwagons.com:
+    ip: 192.168.16.211
     kind: controlplane
     installer:
       image: factory.talos.dev/nocloud-installer/32b1861f04a8e2e7c5458116534762912e2c87f3880fe3dbeaa9da5675fa46fb:v1.14.0

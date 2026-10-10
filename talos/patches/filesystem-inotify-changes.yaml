@@ -1,5 +1,8 @@
-machine:
-  sysctls:
-    fs.inotify.max_user_watches: 2099999999
-    fs.inotify.max_user_instances: 2099999999
-    fs.inotify.max_queued_events: 2099999999
+---
+apiVersion: v1alpha1
+kind: SysctlConfig
+# Used to configure the machine's sysctls (kernel parameters under `/proc/sys`).
+params:
+  fs.inotify.max_user_watches: 2099999999
+  fs.inotify.max_user_instances: 2099999999
+  fs.inotify.max_queued_events: 2099999999

@@ -15,4 +15,4 @@ spec:
         name: piraeus-charts
         namespace: default
       interval: 5m
-  # values:
+  values: {}

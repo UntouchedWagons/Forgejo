@@ -21,6 +21,29 @@ mod kube "kubernetes"
 [group('Talos')]
 mod talos "talos"
 
+go:
+    just talos go
+    just bootstrap go
+
+[private]
+zfs node disk:
+    just log info "Running stage..." "stage" "{{ recipe_name() }}"
+    kubectl debug \
+        --kubeconfig ~/.kube/$(yq '.clusterName' talos/talstomize.yaml) \
+        "node/{{ node }}" \
+        -n kube-system \
+        --image=busybox:1.36 \
+        --profile=sysadmin \
+        -it \
+        -- \
+        chroot /host \
+        zpool create \
+        -m legacy \
+        -O compression=on \
+        -O atime=off \
+        zfspv-pool \
+        {{ disk }}
+
 [private]
 log lvl msg *args:
     gum log -t rfc3339 -s -l "{{ lvl }}" "{{ msg }}" {{ args }}
