@@ -21,14 +21,17 @@ bases:
 defaultInherit: default
 
 releases:
+  - name: cert-manager
+    namespace: cert-manager
+
   - name: gateway-api-crds
     namespace: kube-system
 
-  # - name: grafana-operator
-  #   namespace: monitoring
+  - name: grafana-operator
+    namespace: monitoring
 
-  - name: kube-prometheus-stack
+  - name: prometheus
     namespace: monitoring
 
   - name: snapshot-controller
-    namespace: default
+    namespace: kube-system

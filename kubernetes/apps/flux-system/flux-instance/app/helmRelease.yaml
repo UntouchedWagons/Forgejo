@@ -12,6 +12,6 @@ spec:
     instance:
       sync:
         kind: GitRepository
-        url: ${GIT_REPO_URL}
-        ref: refs/heads/${GIT_REPO_BRANCH}
+        url: https://github.com/UntouchedWagons/Forgejo.git
+        ref: refs/heads/main
         path: kubernetes/flux/cluster

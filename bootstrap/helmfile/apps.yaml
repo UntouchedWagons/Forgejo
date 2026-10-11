@@ -19,4 +19,16 @@ bases:
 
 defaultInherit: default
 
-releases: []
+releases:
+  - name: cilium
+    namespace: kube-system
+
+  - name: flux-operator
+    namespace: flux-system
+    needs:
+      - kube-system/cilium
+
+  - name: flux-instance
+    namespace: flux-system
+    needs:
+      - flux-system/flux-operator
