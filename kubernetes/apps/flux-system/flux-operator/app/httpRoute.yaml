@@ -12,7 +12,6 @@ spec:
       kind: Gateway
       name: traefik-gateway
       namespace: traefik
-      sectionName: https
   rules:
     - backendRefs:
       - group: ""
