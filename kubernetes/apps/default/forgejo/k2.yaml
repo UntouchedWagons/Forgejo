@@ -29,7 +29,7 @@ spec:
 
   targetNamespace: default
   dependsOn:
-    - name: gateway-api
+    - name: gateway-api-crds
       namespace: kube-system
     - name: dragonfly-operator
       namespace: database

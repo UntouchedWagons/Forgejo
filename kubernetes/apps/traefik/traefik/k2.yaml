@@ -8,7 +8,7 @@ spec:
   dependsOn:
     - name: metallb-system
       namespace: metallb-system
-    - name: gateway-api
+    - name: gateway-api-crds
       namespace: kube-system
   # healthChecks:
   interval: 5m
