@@ -11,3 +11,4 @@ resources:
   - reflector
   - gateway-api-crds
   - reloader
+  - snapshot-controller

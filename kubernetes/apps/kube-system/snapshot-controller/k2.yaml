@@ -6,12 +6,11 @@ metadata:
 spec:
   # healthChecks:
   interval: 5m
-  path: ./kubernetes/apps/default/snapshot-controller/app
+  path: ./kubernetes/apps/kube-system/snapshot-controller/app
   prune: true
   wait: true
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: default
-  deletionPolicy: Orphan
+  targetNamespace: kube-system
