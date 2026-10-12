@@ -9,6 +9,6 @@ resources:
   - OCIRepository.yaml
   - metrics-server
   - reflector
-  - gateway-api
+  - gateway-api-crds
   - reloader
   - prometheus-operator-crds
