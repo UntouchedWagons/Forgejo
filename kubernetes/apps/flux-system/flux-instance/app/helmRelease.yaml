@@ -15,3 +15,5 @@ spec:
         url: https://github.com/UntouchedWagons/Forgejo.git
         ref: refs/heads/main
         path: kubernetes/flux/cluster
+      cluster:
+        networkPolicy: false
