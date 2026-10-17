@@ -95,8 +95,9 @@ spec:
       hostnames:
         - "${CLUSTER_DOMAIN}"
       parentRefs:
-        - name: traefik-gateway
-          namespace: traefik
+        - name: cilium-gateway
+          namespace: kube-system
+          sectionName: https
     deployment:
       annotations:
         reloader.stakater.com/auto: "true"
@@ -111,6 +112,3 @@ spec:
     service:
       ssh:
         port: *sshPort
-        type: LoadBalancer
-        annotations:
-          metallb.universe.tf/allow-shared-ip: "web-services"
