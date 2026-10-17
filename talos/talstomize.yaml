@@ -1,8 +1,8 @@
 apiVersion: config.talstomize.dev/v1alpha1
 kind: Talstomize
 
-clusterName: forgejo-test
-controlPlaneEndpoint: https://forgejo-test.infrastructure.untouchedwagons.com:6443
+clusterName: forgejo
+controlPlaneEndpoint: https://forgejo.infrastructure.untouchedwagons.com:6443
 secrets: ./talos-secrets.yaml
 
 # Talstomize only supports the metal platform so we have to specify what image to install
@@ -20,7 +20,7 @@ installer:
           - siderolabs/nfs-utils
 
 nodes:
-  forgejo-test.infrastructure.untouchedwagons.com:
+  forgejo.infrastructure.untouchedwagons.com:
     ip: 192.168.16.134
     kind: controlplane
     patches:
