@@ -15,3 +15,8 @@ spec:
   wait: true
   dependsOn:
     - name: flux-operator
+
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age

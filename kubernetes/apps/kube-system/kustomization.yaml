@@ -12,3 +12,4 @@ resources:
   - gateway-api-crds
   - reloader
   - snapshot-controller
+  - cilium

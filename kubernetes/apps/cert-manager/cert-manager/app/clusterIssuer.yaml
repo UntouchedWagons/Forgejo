@@ -22,7 +22,8 @@ spec:
                     - untouchedwagons.com
 sops:
     age:
-        - enc: |
+        - recipient: age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+          enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
             YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5ZTFXbHBNVDhWa051RktM
             cVFUK29uWW5YbFZueWNnN3J1UGY4d282V25zCjk3Ukx1Y2ZCOCtVYXc0dFVsZ3VC
@@ -30,8 +31,7 @@ sops:
             b3hDbWVOeWZuNzlqYWc2Z01qeFRGckEKSYAABvMZY0c8GjnkehI32BGC+lB+ped8
             T01Ab1JJDiOXDGJG0NAdqTUlhZU0RNER85QFS2XA9XIeJ/2XbTrsSQ==
             -----END AGE ENCRYPTED FILE-----
-          recipient: age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
+    lastmodified: "2026-10-17T14:25:19Z"
+    mac: ENC[AES256_GCM,data:agUNBXLHh/WXi1RU5ziAzpeV6lGFmXlTo0DUndGJKgNk7VbElpJMaQLPyfgpnLKPL6Q12bi6QORSReaP1LWcqW6AdgzznYx20T2sk25nDI0ffGs58JtH5Cz5jAWbOjlKFlyrKGGXViZXdvOg2NLNsU2oCsryYpo5PrrtdLYsibY=,iv:6i/yq5YXN5QE/vfI9ufVO9ApMxpkfIIViYSGe32ohqk=,tag:hdY9k9TsxUK10fYhr0UPNg==,type:str]
     encrypted_regex: ^(email)$
-    lastmodified: "2026-09-09T15:33:36Z"
-    mac: ENC[AES256_GCM,data:8JHRXXT84JWrLaaOnl8QJuYAKlYVCLQdDA94iewJ8JNR87/IY/kgl+3NqryorLdo43EsqrQUXef5cNT9DXHuPT/jJdDZvkdeQp2t+jyFdgLXqU+ffa0HedJoR3hegOzJzjlgCJ20SNmGVphdwu6gCPI9YiEbdbGdwDoXDyPzUXk=,iv:l/9HT5iU4r+qvAhfP1ae622ggowc2O+a0aTracw/M8I=,tag:y9BsPETKh72nQ9k6Hj6ALw==,type:str]
     version: 3.13.1

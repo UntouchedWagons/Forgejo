@@ -24,6 +24,14 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: ssh-tcp
+      protocol: TCP
+      port: 22
+      allowedRoutes:
+        kinds:
+          - kind: TCPRoute
+        namespaces:
+          from: All
 ---
 # yaml-language-server: $schema=https://k8s-schemas.home-operations.com/cilium.io/ciliuml2announcementpolicy_v2alpha1.json
 apiVersion: cilium.io/v2alpha1
@@ -45,7 +53,7 @@ metadata:
   namespace: kube-system
 spec:
   blocks:
-    - cidr: "192.168.16.211/32"
+    - cidr: "192.168.16.212/32"
 ---
 # yaml-language-server: $schema=https://k8s-schemas.home-operations.com/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1

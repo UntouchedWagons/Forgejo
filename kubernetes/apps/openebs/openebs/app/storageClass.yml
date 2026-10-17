@@ -12,7 +12,7 @@ parameters:
   compression: "lz4"
   dedup: "off"
   fstype: "zfs"
-  poolname: "zfspv-pool/pvcs"
+  poolname: "zfspv-pool"
 # Use allowedTopologies: in case ZFS is only available
 # on some of the nodes in the cluster.
 ---

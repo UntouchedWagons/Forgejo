@@ -33,3 +33,10 @@ spec:
           # -- Enable/Disable installation of Volume Snapshot CRD's
           enabled: false
           keep: false
+
+    zfs-localpv:
+      zfsNode:
+        # Needed on Talos but not on regular k3s, unsure if changing this in a
+        # running install has any negative effects
+        encrKeysDir: /var/openebs/keys
+        allowedTopologyKeys: kubernetes.io/hostname
