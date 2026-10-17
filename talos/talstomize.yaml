@@ -1,7 +1,7 @@
 apiVersion: config.talstomize.dev/v1alpha1
 kind: Talstomize
 
-clusterName: my-cluster
+clusterName: forgejo-test
 controlPlaneEndpoint: https://forgejo-test.infrastructure.untouchedwagons.com:6443
 secrets: ./talos-secrets.yaml
 
@@ -17,6 +17,7 @@ installer:
           - siderolabs/intel-ucode
           - siderolabs/qemu-guest-agent
           - siderolabs/zfs
+          - siderolabs/nfs-utils
 
 nodes:
   forgejo-test.infrastructure.untouchedwagons.com:
