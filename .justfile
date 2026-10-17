@@ -24,7 +24,7 @@ mod talos "talos"
 go:
     just talos go
     just bootstrap go
-    just zfs forgejo-test /dev/sdb
+    just zfs socrates /dev/sdb
 
 [private]
 zfs node disk:
