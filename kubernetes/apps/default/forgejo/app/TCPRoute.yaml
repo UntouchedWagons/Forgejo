@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: ssh-route
+  namespace: default
+spec:
+  parentRefs:
+    - name: cilium-gateway
+      namespace: kube-system
+      sectionName: ssh-tcp
+  rules:
+    - backendRefs:
+        - name: forgejo-ssh
+          port: 22
