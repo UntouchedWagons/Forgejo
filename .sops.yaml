@@ -5,12 +5,12 @@ creation_rules:
     key_groups:
       - age:
           - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
-  - path_regex: kubernetes/apps/cert-manager/cert-manager-config/app/secret.yaml
+  - path_regex: kubernetes/apps/cert-manager/cert-manager/app/secret.yaml
     encrypted_regex: "^(cloudflare-token)$"
     key_groups:
       - age:
           - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
-  - path_regex: kubernetes/apps/cert-manager/cert-manager-config/app/clusterIssuer.yaml
+  - path_regex: kubernetes/apps/cert-manager/cert-manager/app/clusterIssuer.yaml
     encrypted_regex: "^(email)$"
     key_groups:
       - age:
