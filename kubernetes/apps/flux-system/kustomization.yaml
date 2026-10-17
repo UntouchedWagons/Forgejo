@@ -8,5 +8,3 @@ resources:
   - ../../settings/configMap.yaml
   - flux-operator
   - flux-instance
-  - flux-alerting
-  # - flux-route
