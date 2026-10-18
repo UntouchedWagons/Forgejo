@@ -2,9 +2,7 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Provider
 metadata:
-  name: discord
-  namespace: flux-system
+  name: alertmanager
 spec:
-  type: discord
-  secretRef:
-    name: discord-webhook
+  type: alertmanager
+  address: http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093/api/v2/alerts/

@@ -2,11 +2,11 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
-  name: discord
+  name: alertmanager
   namespace: flux-system
 spec:
   providerRef:
-    name: discord
+    name: alertmanager
   eventMetadata:
     summary: Cluster addons impacted
     cluster: ${CLUSTER_NAME}
@@ -15,4 +15,6 @@ spec:
     - kind: GitRepository
       name: '*'
     - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
       name: '*'

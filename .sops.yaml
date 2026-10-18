@@ -15,11 +15,6 @@ creation_rules:
     key_groups:
       - age:
           - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
-  - path_regex: kubernetes/apps/flux-system/flux-alerting/app/secret.yaml
-    encrypted_regex: "^(address)$"
-    key_groups:
-      - age:
-          - age1gdt6s73quvrlprl4mt9fssrp378rmxtjrmykwnmvtsrt8g20rd2qh8s5jn
   - path_regex: kubernetes/components/volsync-nfs-backup/secret.yaml
     encrypted_regex: "^(RESTIC_PASSWORD|RESTIC_REPOSITORY)$"
     key_groups:
