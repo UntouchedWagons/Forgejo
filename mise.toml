@@ -23,7 +23,7 @@ helmfile = "1.8.2"
 
 # Talos Stuff
 "aqua:talosctl" = "1.14.5"
-"github:mirceanton/talstomize" = "1.0.2"
+"github:mirceanton/talstomize" = "1.0.3"
 "github:mirceanton/talswitcher" = "2.2.42"
 
 # Misc Tools
