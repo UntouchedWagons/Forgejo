@@ -19,7 +19,7 @@ sofka = "0.35.0"
 
 # Helm + Plugins
 "aqua:helm" = "4.3.1"
-helmfile = "1.8.2"
+helmfile = "1.8.3"
 
 # Talos Stuff
 "aqua:talosctl" = "1.14.5"
