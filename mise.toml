@@ -15,7 +15,7 @@ sofka = "0.35.0"
 
 # Flux Tools
 "aqua:fluxcd/flux2" = "2.10.0"
-"github:home-operations/flate" = "0.7.0"
+"github:home-operations/flate" = "0.7.3"
 
 # Helm + Plugins
 "aqua:helm" = "4.3.1"
