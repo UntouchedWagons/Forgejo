@@ -36,6 +36,9 @@ krew = "0.5.0"
 # Cilium
 cilium-cli = "0.20.2"
 
+# Terraform
+terraform = "1.17.1"
+
 [settings]
 # Hold back freshly published tool releases (supply-chain protection).
 minimum_release_age = "3d"

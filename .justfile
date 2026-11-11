@@ -21,6 +21,9 @@ mod kube "kubernetes"
 [group('Talos')]
 mod talos "talos"
 
+[group('Terraform')]
+mod terraform "terraform"
+
 go:
     just talos go
     just bootstrap go
