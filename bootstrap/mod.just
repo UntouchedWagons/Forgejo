@@ -26,18 +26,18 @@ go: wait-for-api sops crds apps
 
 [private]
 sops:
-    sops -d secret.yaml | kubectl apply --kubeconfig ~/.kube/$(yq '.clusterName' ../talos/talstomize.yaml) -f -
+    sops -d secret.yaml | kubectl apply -f -
 
 [private]
 crds:
     just log info "Running stage..." "stage" "{{ recipe_name() }}"
-    if ! helmfile -f "{{ source_directory() }}/helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --kubeconfig ~/.kube/$(yq '.clusterName' ../talos/talstomize.yaml) --server-side --force-conflicts -f -; then
+    if ! helmfile -f "{{ source_directory() }}/helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --server-side --force-conflicts -f -; then
         just log fatal "Failed to apply base crds" "stage" "{{ recipe_name() }}"
     fi
 
 [private]
 apps:
     just log info "Running stage..." "stage" "{{ recipe_name() }}"
-    if ! helmfile -f "{{ source_directory() }}/helmfile/apps.yaml" sync --hide-notes --kubeconfig ~/.kube/$(yq '.clusterName' ../talos/talstomize.yaml); then
+    if ! helmfile -f "{{ source_directory() }}/helmfile/apps.yaml" sync --hide-notes; then
         just log fatal "Failed to sync helmfile" "stage" "{{ recipe_name() }}"
     fi

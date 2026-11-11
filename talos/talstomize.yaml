@@ -5,9 +5,10 @@ clusterName: forgejo
 controlPlaneEndpoint: https://socrates.infrastructure.untouchedwagons.com:6443
 secrets: ./talos-secrets.yaml
 
+talosVersion: v1.14.4
+
 # Talstomize only supports the metal platform so we have to specify what image to install
 installer:
-  talosVersion: v1.14.2
   schematic:
     customization:
       extraKernelArgs:
@@ -15,18 +16,25 @@ installer:
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
+          - siderolabs/nfs-utils
           - siderolabs/qemu-guest-agent
           - siderolabs/zfs
-          - siderolabs/nfs-utils
 
 nodes:
   socrates.infrastructure.untouchedwagons.com:
     ip: 192.168.16.190
     kind: controlplane
     patches:
-      - machine:
-          install:
-            disk: "/dev/sda"
+      - apiVersion: v1alpha1
+        kind: UnattendedInstallConfig
+        provisioning:
+          diskSelector:
+            match: disk.dev_path == "/dev/sda"
+      - apiVersion: v1alpha1
+        kind: TimeSyncConfig
+        ntp:
+          servers:
+            - time.cloudflare.com
 
 # Applied to every node, regardless of role.
 patches:

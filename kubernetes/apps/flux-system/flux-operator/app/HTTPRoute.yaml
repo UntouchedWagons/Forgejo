@@ -10,17 +10,18 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: traefik-gateway
-      namespace: traefik
+      name: cilium-gateway
+      namespace: kube-system
+      sectionName: https
   rules:
     - backendRefs:
-      - group: ""
-        kind: Service
-        name: flux-operator
-        namespace: flux-system
-        port: 9080
-        weight: 1
+        - group: ""
+          kind: Service
+          name: flux-operator
+          namespace: flux-system
+          port: 9080
+          weight: 1
       matches:
-      - path:
-          type: PathPrefix
-          value: /
+        - path:
+            type: PathPrefix
+            value: /

@@ -55,4 +55,4 @@ bootstrap:
 [doc('Generate kubeconfig')]
 kubeconfig:
     just log info "Running stage..." "stage" "{{ recipe_name() }}"
-    talosctl kubeconfig --talosconfig _out/talosconfig --force ~/.kube/$(yq '.clusterName' talstomize.yaml)
+    talosctl kubeconfig --talosconfig _out/talosconfig --force ../kubeconfig

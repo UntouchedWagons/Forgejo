@@ -30,7 +30,6 @@ go:
 zfs node disk:
     just log info "Running stage..." "stage" "{{ recipe_name() }}"
     kubectl debug \
-        --kubeconfig ~/.kube/$(yq '.clusterName' talos/talstomize.yaml) \
         "node/{{ node }}" \
         -n kube-system \
         --image=busybox:1.36 \

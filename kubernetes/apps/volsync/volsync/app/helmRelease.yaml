@@ -15,4 +15,6 @@ spec:
         name: backube
         namespace: volsync
       interval: 5m
-  # values:
+  values:
+    metrics:
+      disableAuth: true

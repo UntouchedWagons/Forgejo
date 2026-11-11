@@ -6,7 +6,7 @@ metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
 spec:
-  storageClassName: "${VOLSYNC_STORAGECLASS:=local-path}"
+  storageClassName: "${VOLSYNC_STORAGECLASS:=zfspv-file}"
   accessModes: ["${VOLSYNC_ACCESSMODES:=ReadWriteOnce}"]
   resources:
     requests:

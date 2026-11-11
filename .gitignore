@@ -1,4 +1,5 @@
 .vscode
 .decrypted~*.yaml
-kubeconfig
+
 talos/_out
+kubeconfig
