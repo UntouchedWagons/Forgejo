@@ -13,5 +13,9 @@ spec:
     namespace: flux-system
   targetNamespace: flux-system
   wait: true
-  dependsOn:
-    - name: flux-operator
+
+  postBuild:
+    substituteFrom:
+      # ConfigMaps for non-sensitive values
+      - kind: ConfigMap
+        name: cluster-vars
