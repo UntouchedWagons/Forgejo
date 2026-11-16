@@ -36,7 +36,7 @@ krew = "0.5.0"
 gum = '2.0.2'
 
 # Cilium
-cilium-cli = "0.20.2"
+cilium-cli = "0.20.3"
 
 # Terraform
 terraform = "1.17.2"
