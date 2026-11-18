@@ -18,6 +18,7 @@
     "managerFilePatterns": ["/yaml$/"]
   },
   "ignorePaths": ["**/talos/**", "**/template/**"],
+  "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "assignees": [
     "UntouchedWagons"
