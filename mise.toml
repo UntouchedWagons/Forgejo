@@ -11,7 +11,7 @@ TALOSCONFIG = "{{config_root}}/talos/_out/talosconfig"
 sofka = "0.38.0"
 
 # Flux Tools
-"aqua:fluxcd/flux2" = "2.10.0"
+"aqua:fluxcd/flux2" = "2.10.1"
 "github:home-operations/flate" = "0.8.0"
 
 # Helm + Plugins
