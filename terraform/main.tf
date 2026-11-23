@@ -9,7 +9,7 @@ resource "proxmox_virtual_environment_vm" "socrates" {
   started       = false
   machine       = "q35"
   scsi_hardware = "virtio-scsi-single"
-  boot_order    = ["ide2", "scsi0"]
+  boot_order    = ["scsi0", "ide2"]
 
   # Display Configuration
   vga {
