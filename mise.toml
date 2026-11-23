@@ -7,10 +7,7 @@ TALOSCONFIG = "{{config_root}}/talos/_out/talosconfig"
 [tools]
 # Kubectl + Tools + Plugins
 "aqua:kubectl" = "1.37.2"
-"github:mirceanton/kubectl-switch" = "2.4.38"
-"github:josegonzalez/kubectl-eso" = "0.5.0"
 "github:cloudnative-pg/cloudnative-pg" = "1.30.1"
-"aqua:kustomize" = "5.8.3"
 sofka = "0.37.0"
 
 # Flux Tools
@@ -24,7 +21,6 @@ helmfile = "1.8.4"
 # Talos Stuff
 "aqua:talosctl" = "1.14.6"
 "github:mirceanton/talstomize" = "1.0.4"
-"github:mirceanton/talswitcher" = "2.2.44"
 
 # Misc Tools
 just = "1.59.0"
