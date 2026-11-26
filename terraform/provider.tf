@@ -3,7 +3,7 @@ terraform {
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
-      version = "~> 0.123.0" # Use the latest stable version available
+      version = "~> 0.124.0" # Use the latest stable version available
     }
     sops = {
       source  = "carlpett/sops"
