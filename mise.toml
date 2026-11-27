@@ -19,7 +19,7 @@ sofka = "0.39.0"
 helmfile = "1.8.4"
 
 # Talos Stuff
-"aqua:talosctl" = "1.14.6"
+"aqua:talosctl" = "1.14.7"
 "github:mirceanton/talstomize" = "1.0.4"
 
 # Misc Tools
